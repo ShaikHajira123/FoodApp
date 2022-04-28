@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>foodApp</title>
+    <link rel="stylesheet" href="./styles/navbar.css">
+</head>
+<body>
+     <div id="container">
+         <div id="navbar"></div>
+         <input id="search" type="text" placeholder="Search Recipe...">
+         <button onclick="window.location.href='recipe.html'" id="btn">Recipe of the day</button>
+         <button onclick="window.location.href='latest.html'" id="btn">Latest Recipes</button>
+         <div id="main">
+            
+         </div>
+     </div>
+
+</body>
+</html>
+<script type="module">
+    import navbar from "./navbar.js"
+    import {apiCall,appendrecipe} from "./scripts/main.js"
+
+   
+    let navbar_div=document.getElementById('navbar')
+  navbar_div.innerHTML=navbar
+  
+
+  let input=document.getElementById('search')
+  let res=await apiCall(`https://themealdb.com/api/json/v1/1/search.php?f=p`)
+  console.log(res)
+  let parent=document.getElementById('main')
+   appendrecipe(res,parent)
+  input.addEventListener("keypress",(e)=>{
+        if(e.key==="Enter"){
+
+  let input_value=document.getElementById('search').value 
+          localStorage.setItem('recipe',JSON.stringify(input_value))
+         
+          window.location.href="search.html"
+        }
+    })
+</script>
