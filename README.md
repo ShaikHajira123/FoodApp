@@ -9,5 +9,7 @@
  * JavaScript
 
 ### Have a look at my application here
+** Deploy link ** http://hajirafoodrecipeapp.netlify.app/
+
 https://user-images.githubusercontent.com/97529565/165749912-f0a79ef6-31cd-45d1-961a-8038a32eeac0.mp4
 
